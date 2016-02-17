@@ -35,7 +35,7 @@ void InterfaceManager::GetInterfaces()
 
 }
 
-template<typename fn> fn InterfaceManager::GetInterface(char* modulename, char* interfacename)
+template<typename fn> fn InterfaceManager::GetInterface(std::string modulename, std::string interfacename)
 {
 	CreateInterfaceFn CreateInterface;
 	ASSERT(CreateInterface =(CreateInterfaceFn)GetProcAddress(GetModuleHandle(modulename), "CreateInterface"));
