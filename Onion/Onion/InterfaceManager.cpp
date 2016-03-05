@@ -23,7 +23,7 @@ void InterfaceManager::GetInterfaces()
 	ASSERT(g_pModelInfo = GetInterface<CModelInfo*>("engine.dll","VModelInfoClient"));
 
 
-	//Credits to lilneo/exept/null for the address class and this cool code. It looks neater and stops pointer-arithmetic from being a problem.
+	//Credits to ~lilneo/exept/null for the address class and this cool code. It looks neater and stops pointer-arithmetic from being a problem.
 	Address CDLLTable = ((Address)g_pClient).To<DWORD*>();
 	Address pShutdown = (CDLLTable.As<DWORD*>())[4];
 	ASSERT(g_pClientMode = *pShutdown.GetOffset(0xF2).To<CClientMode**>());
