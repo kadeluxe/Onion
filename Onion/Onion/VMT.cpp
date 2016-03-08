@@ -213,10 +213,10 @@ unsigned int VMT::countTable()
 {
 	if (!m_pObject)
 		return 0;
-	//guess It was incorrect casting to BaseInterface** But 
+		
 	for (m_iCount = 0; !IsBadReadPtr((*(void***)m_pObject)[m_iCount], 4); m_iCount++);
 
-	return m_iCount;//its right here. m_pObject is access violation. i think its out of range or something. sec bp+ run
+	return m_iCount;
 }
 
 bool VMT::isValid()
