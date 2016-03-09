@@ -38,7 +38,7 @@ void InterfaceManager::GetInterfaces()
 template<typename fn> fn InterfaceManager::GetInterface(std::string modulename, std::string interfacename)
 {
 	CreateInterfaceFn CreateInterface;
-	ASSERT(CreateInterface =(CreateInterfaceFn)GetProcAddress(GetModuleHandle(modulename), "CreateInterface"));
+	ASSERT(CreateInterface =(CreateInterfaceFn)GetProcAddress(GetModuleHandle(modulename.c_str()), "CreateInterface"));
 	
 	fn pInterface = 0;
 	for (int i = 100; i > 0; i--)
