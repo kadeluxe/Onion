@@ -23,7 +23,7 @@ void InterfaceManager::GetInterfaces()
 	ASSERT(g_pModelInfo = GetInterface<CModelInfo*>("engine.dll","VModelInfoClient"));
 
 
-	//Credits to lilneo/exept/null for the address class and this cool code. It looks neater and stops pointer-arithmetic from being a problem.
+	//Credits to ~lilneo/exept/null for the address class and this cool code. It looks neater and stops pointer-arithmetic from being a problem.
 	Address CDLLTable = ((Address)g_pClient).To<DWORD*>();
 	Address pShutdown = (CDLLTable.As<DWORD*>())[4];
 	ASSERT(g_pClientMode = *pShutdown.GetOffset(0xF2).To<CClientMode**>());
@@ -38,7 +38,7 @@ void InterfaceManager::GetInterfaces()
 template<typename fn> fn InterfaceManager::GetInterface(std::string modulename, std::string interfacename)
 {
 	CreateInterfaceFn CreateInterface;
-	ASSERT(CreateInterface =(CreateInterfaceFn)GetProcAddress(GetModuleHandle(modulename), "CreateInterface"));
+	ASSERT(CreateInterface =(CreateInterfaceFn)GetProcAddress(GetModuleHandle(modulename.c_str()), "CreateInterface"));
 	
 	fn pInterface = 0;
 	for (int i = 100; i > 0; i--)

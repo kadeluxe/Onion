@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <Windows.h>
 #include "Utils.h"
 #include "Log.h"
